@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <title>Sistem Pakar Diet – RSBP</title>
+  <style>
+    body {
+      font-family: system-ui, sans-serif;
+      max-width: 800px;
+      margin: 20px auto;
+      padding: 16px;
+      background: #0f172a;
+      color: #e5e7eb;
+    }
+    h1, h2 {
+      color: #facc15;
+    }
+    .card {
+      background: #111827;
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      border: 1px solid #1f2937;
+    }
+    label {
+      display: block;
+      margin-top: 8px;
+      font-size: 0.95rem;
+    }
+    input[type="number"] {
+      width: 100%;
+      padding: 6px 8px;
+      margin-top: 4px;
+      border-radius: 6px;
+      border: 1px solid #374151;
+      background: #020617;
+      color: #e5e7eb;
+    }
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .checkbox-group label {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 0;
+      background: #020617;
+      padding: 4px 8px;
+      border-radius: 8px;
+      border: 1px solid #1f2937;
+      cursor: pointer;
+    }
+    button {
+      margin-top: 16px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #022c22;
+    }
+    button.secondary {
+      background: transparent;
+      border: 1px solid #4b5563;
+      color: #e5e7eb;
+      margin-right: 8px;
+    }
+    .steps {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+    }
+    .step-pill {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      color: #9ca3af;
+    }
+    .step-pill.active {
+      background: #22c55e;
+      color: #022c22;
+      border-color: #22c55e;
+    }
+    .hidden {
+      display: none;
+    }
+    .result-section h3 {
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+    .tips-list, .food-list {
+      padding-left: 18px;
+      margin-top: 4px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid #4b5563;
+      font-size: 0.75rem;
+      margin-right: 4px;
+      margin-top: 2px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 6px;
+      font-size: 0.85rem;
+    }
+    th, td {
+      border: 1px solid #1f2937;
+      padding: 4px 6px;
+      text-align: left;
+    }
+    th {
+      background: #020617;
+    }
+    .small {
+      font-size: 0.8rem;
+      color: #9ca3af;
+    }
+
+    footer {
+      margin-top: 32px;
+      padding: 16px;
+      text-align: center;
+      font-size: 0.85rem;
+      color: #9ca3af;
+      border-top: 1px solid #1f2937;
+    }
+    footer span {
+      color: white;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <h1>Sistem Pakar Diet</h1>
+
+  <div class="card">
+    <div class="steps">
+      <div id="step1-pill" class="step-pill active">1/2: Data Fisik</div>
+      <div id="step2-pill" class="step-pill">2/2: Preferensi & Kondisi</div>
+    </div>
+
+    <!-- step1 -->
+    <div id="step1">
+      <label>
+        Tinggi badan (cm)
+        <input type="number" id="height_cm" min="100" max="250" step="0.1" />
+      </label>
+      <label>
+        Berat badan (kg)
+        <input type="number" id="weight_kg" min="20" max="300" step="0.1" />
+      </label>
+
+      <button id="to-step2">Next</button>
+    </div>
+
+    <!-- step2 -->
+    <div id="step2" class="hidden">
+      <label>Preferensi & Kondisi Kesehatan:</label>
+      <div class="checkbox-group">
+        <label><input type="checkbox" id="vegetarian" /> Vegetarian</label>
+        <label><input type="checkbox" id="diabetes" /> Diabetes</label>
+        <label><input type="checkbox" id="hypertension" /> Hipertensi</label>
+        <label><input type="checkbox" id="allergy_susu" /> Alergi susu</label>
+        <label><input type="checkbox" id="allergy_seafood" /> Alergi seafood</label>
+      </div>
+
+      <button class="secondary" id="back-step1">Kembali</button>
+      <button id="submit-consult">Hitung Rekomendasi</button>
+    </div>
+  </div>
+
+  <div id="result-card" class="card hidden">
+    <h2>Hasil Rekomendasi</h2>
+    <div id="result-content" class="result-section"></div>
+  </div>
+
+  <footer>
+    Nama Anggota Kelompok:<br>
+    <span> Fitra Arya Rajendra / 5025231236<br>
+Dionysus Sacha Uistean Vladilen / 5025231228<br>
+Daffa Abiyyu Rachmanto / 5025231218<br>
+Mochamad Kolbi Nuron / 5025231183
+    </span> 
+  </footer>
+
+  <script>
+    const step1El = document.getElementById('step1');
+    const step2El = document.getElementById('step2');
+    const step1Pill = document.getElementById('step1-pill');
+    const step2Pill = document.getElementById('step2-pill');
+    const resultCard = document.getElementById('result-card');
+    const resultContent = document.getElementById('result-content');
+
+    document.getElementById('to-step2').addEventListener('click', () => {
+      const h = parseFloat(document.getElementById('height_cm').value);
+      const w = parseFloat(document.getElementById('weight_kg').value);
+      if (!h || !w) {
+        alert('Isi tinggi dan berat badan terlebih dahulu.');
+        return;
+      }
+      step1El.classList.add('hidden');
+      step2El.classList.remove('hidden');
+      step1Pill.classList.remove('active');
+      step2Pill.classList.add('active');
+    });
+
+    document.getElementById('back-step1').addEventListener('click', () => {
+      step2El.classList.add('hidden');
+      step1El.classList.remove('hidden');
+      step2Pill.classList.remove('active');
+      step1Pill.classList.add('active');
+    });
+
+    document.getElementById('submit-consult').addEventListener('click', async () => {
+      const height_cm = parseFloat(document.getElementById('height_cm').value);
+      const weight_kg = parseFloat(document.getElementById('weight_kg').value);
+
+      const diabetes = document.getElementById('diabetes').checked;
+      const hypertension = document.getElementById('hypertension').checked;
+      const vegetarian = document.getElementById('vegetarian').checked;
+      const allergy_susu = document.getElementById('allergy_susu').checked;
+      const allergy_seafood = document.getElementById('allergy_seafood').checked;
+
+      const payload = {
+        height_cm,
+        weight_kg,
+        diabetes,
+        hypertension,
+        vegetarian,
+        allergy_susu,
+        allergy_seafood
+      };
+
+      try {
+        const res = await fetch('http://127.0.0.1:8000/consult', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(payload)
+        });
+
+        if (!res.ok) {
+          throw new Error('Gagal memproses di backend');
+        }
+
+        const data = await res.json();
+        tampilkanHasil(data);
+      } catch (err) {
+        console.error(err);
+        alert('Terjadi kesalahan saat memproses konsultasi.');
+      }
+    });
+
+    function tampilkanHasil(data) {
+      resultCard.classList.remove('hidden');
+
+      const {
+        bmi,
+        bmi_category,
+        ibw_kg,
+        target_bmi,
+        target_weight_kg,
+        protein_grams_per_day,
+        calories_min_per_day,
+        calories_max_per_day,
+        selected_bmi_rule,
+        diet_tags,
+        tips,
+        recommended_foods
+      } = data;
+
+      resultContent.innerHTML = `
+        <h3>Ringkasan Status</h3>
+        <p>
+          BMI kamu: <strong>${bmi}</strong> (${bmi_category})<br/>
+          Target BMI (IBW): <strong>${target_bmi}</strong><br/>
+          Berat badan ideal (IBW): <strong>${target_weight_kg.toFixed(1)} kg</strong>
+        </p>
+
+        <h3>Kebutuhan Nutrisi Harian</h3>
+        <p>
+          Perkiraan kebutuhan kalori: <strong>${calories_min_per_day} – ${calories_max_per_day} kkal/hari</strong><br/>
+          Perkiraan kebutuhan protein: <strong>${protein_grams_per_day} gram/hari</strong><br/>
+          ${selected_bmi_rule ? `<span class="small">Rule KB terpakai: ${selected_bmi_rule}</span>` : ''}
+        </p>
+
+        <h3>Tag Pola Diet</h3>
+        <p>
+          ${
+            diet_tags && diet_tags.length > 0
+              ? diet_tags.map(t => `<span class="badge">${t}</span>`).join(' ')
+              : '<span class="small">Tidak ada tag khusus</span>'
+          }
+        </p>
+
+        <h3>Tips Pengolahan & Kebiasaan</h3>
+        ${
+          tips && tips.length > 0
+            ? `<ul class="tips-list">${tips.map(t => `<li>${t}</li>`).join('')}</ul>`
+            : '<p class="small">Tidak ada tips khusus dari kondisi kesehatan yang dipilih.</p>'
+        }
+
+        <h3>Contoh Bahan Makanan yang Direkomendasikan</h3>
+        ${
+          recommended_foods && recommended_foods.length > 0
+            ? `
+              <table>
+                <thead>
+                  <tr>
+                    <th>Bahan</th>
+                    <th>Kalori/100g</th>
+                    <th>Protein/100g</th>
+                    <th>Karbo/100g</th>
+                    <th>Lemak/100g</th>
+                    <th>Tag</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${recommended_foods
+                    .map(f => `
+                      <tr>
+                        <td>${f.name}</td>
+                        <td>${f.per_100g.calories}</td>
+                        <td>${f.per_100g.protein}</td>
+                        <td>${f.per_100g.carbs}</td>
+                        <td>${f.per_100g.fat}</td>
+                        <td>${f.tags.map(t => `<span class="badge">${t}</span>`).join(' ')}</td>
+                      </tr>
+                    `)
+                    .join('')}
+                </tbody>
+              </table>
+            `
+            : '<p class="small">Belum ada makanan yang cocok dengan kriteria di KB.</p>'
+        }
+      `;
+    }
+  </script>
+</body>
+</html>
