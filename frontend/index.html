@@ -2,7 +2,7 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Sistem Pakar Diet – RSBP</title>
+  <title>Sistem Pakar Diet</title>
   <style>
     body {
       font-family: system-ui, sans-serif;
@@ -75,6 +75,7 @@
       gap: 8px;
       margin-bottom: 12px;
       font-size: 0.85rem;
+      flex-wrap: wrap;
     }
     .step-pill {
       padding: 4px 10px;
@@ -143,13 +144,15 @@
 <body>
   <h1>Sistem Pakar Diet</h1>
 
-  <div class="card">
+  <div id="wizard-card" class="card">
     <div class="steps">
-      <div id="step1-pill" class="step-pill active">1/2: Data Fisik</div>
-      <div id="step2-pill" class="step-pill">2/2: Preferensi & Kondisi</div>
+      <div id="step1-pill" class="step-pill active">Data Fisik</div>
+      <div id="step2-pill" class="step-pill">Preferensi</div>
+      <div id="step3-pill" class="step-pill">Kondisi Kesehatan</div>
+      <div id="step4-pill" class="step-pill">Hasil</div>
     </div>
 
-    <!-- step1 -->
+    <!-- STEP 1: Tinggi & Berat -->
     <div id="step1">
       <label>
         Tinggi badan (cm)
@@ -163,44 +166,88 @@
       <button id="to-step2">Next</button>
     </div>
 
-    <!-- step2 -->
+    <!-- STEP 2: Preferensi -->
     <div id="step2" class="hidden">
-      <label>Preferensi & Kondisi Kesehatan:</label>
+      <label>Preferensi Makan:</label>
       <div class="checkbox-group">
         <label><input type="checkbox" id="vegetarian" /> Vegetarian</label>
+        <label><input type="checkbox" id="halal" /> Halal</label>
+        <label><input type="checkbox" id="lactose_free" /> Lactose-free</label>
+        <label><input type="checkbox" id="gluten_free" /> Gluten-free</label>
+        <label><input type="checkbox" id="no_seafood" /> No seafood</label>
+      </div>
+
+      <button class="secondary" id="back-step1">Back</button>
+      <button id="to-step3">Next</button>
+    </div>
+
+    <!-- STEP 3: Kondisi Kesehatan -->
+    <div id="step3" class="hidden">
+      <label>Kondisi Kesehatan:</label>
+      <div class="checkbox-group">
         <label><input type="checkbox" id="diabetes" /> Diabetes</label>
         <label><input type="checkbox" id="hypertension" /> Hipertensi</label>
         <label><input type="checkbox" id="allergy_susu" /> Alergi susu</label>
         <label><input type="checkbox" id="allergy_seafood" /> Alergi seafood</label>
+        <label><input type="checkbox" id="hyperlipidemia" /> Kolesterol tinggi</label>
+        <label><input type="checkbox" id="gout" /> Asam urat</label>
+        <label><input type="checkbox" id="heart_disease" /> Penyakit jantung</label>
+        <label><input type="checkbox" id="gerd" /> GERD / Asam lambung</label>
       </div>
 
-      <button class="secondary" id="back-step1">Kembali</button>
+      <button class="secondary" id="back-step2">Back</button>
       <button id="submit-consult">Hitung Rekomendasi</button>
     </div>
   </div>
 
+  <!-- STEP 4: Hasil Rekomendasi -->
   <div id="result-card" class="card hidden">
     <h2>Hasil Rekomendasi</h2>
     <div id="result-content" class="result-section"></div>
+    <button id="back-to-start" class="secondary">Back</button>
   </div>
+
 
   <footer>
     Nama Anggota Kelompok:<br>
-    <span> Fitra Arya Rajendra / 5025231236<br>
-Dionysus Sacha Uistean Vladilen / 5025231228<br>
-Daffa Abiyyu Rachmanto / 5025231218<br>
-Mochamad Kolbi Nuron / 5025231183
-    </span> 
+    <span>
+      Fitra Arya Rajendra / 5025231236<br>
+      Dionysus Sacha Uistean Vladilen / 5025231228<br>
+      Daffa Abiyyu Rachmanto / 5025231218<br>
+      Mochamad Kolbi Nuron / 5025231183
+    </span>
   </footer>
 
   <script>
     const step1El = document.getElementById('step1');
     const step2El = document.getElementById('step2');
-    const step1Pill = document.getElementById('step1-pill');
-    const step2Pill = document.getElementById('step2-pill');
+    const step3El = document.getElementById('step3');
     const resultCard = document.getElementById('result-card');
     const resultContent = document.getElementById('result-content');
 
+    const step1Pill = document.getElementById('step1-pill');
+    const step2Pill = document.getElementById('step2-pill');
+    const step3Pill = document.getElementById('step3-pill');
+    const step4Pill = document.getElementById('step4-pill');
+
+    document.getElementById('back-to-start').addEventListener('click', () => {
+      document.getElementById('wizard-card').classList.remove('hidden');
+      step1El.classList.remove('hidden');
+      step2El.classList.add('hidden');
+      step3El.classList.add('hidden');
+      resultCard.classList.add('hidden');
+      setActiveStep(1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    function setActiveStep(stepNumber) {
+      const pills = [step1Pill, step2Pill, step3Pill, step4Pill];
+      pills.forEach((pill, idx) => {
+        pill.classList.toggle('active', idx === stepNumber - 1);
+      });
+    }
+
+    // Navigasi step
     document.getElementById('to-step2').addEventListener('click', () => {
       const h = parseFloat(document.getElementById('height_cm').value);
       const w = parseFloat(document.getElementById('weight_kg').value);
@@ -210,35 +257,75 @@ Mochamad Kolbi Nuron / 5025231183
       }
       step1El.classList.add('hidden');
       step2El.classList.remove('hidden');
-      step1Pill.classList.remove('active');
-      step2Pill.classList.add('active');
+      step3El.classList.add('hidden');
+      resultCard.classList.add('hidden');
+      setActiveStep(2);
     });
 
     document.getElementById('back-step1').addEventListener('click', () => {
-      step2El.classList.add('hidden');
       step1El.classList.remove('hidden');
-      step2Pill.classList.remove('active');
-      step1Pill.classList.add('active');
+      step2El.classList.add('hidden');
+      step3El.classList.add('hidden');
+      resultCard.classList.add('hidden');
+      setActiveStep(1);
     });
 
+    document.getElementById('to-step3').addEventListener('click', () => {
+      step1El.classList.add('hidden');
+      step2El.classList.add('hidden');
+      step3El.classList.remove('hidden');
+      resultCard.classList.add('hidden');
+      setActiveStep(3);
+    });
+
+    document.getElementById('back-step2').addEventListener('click', () => {
+      step1El.classList.add('hidden');
+      step2El.classList.remove('hidden');
+      step3El.classList.add('hidden');
+      resultCard.classList.add('hidden');
+      setActiveStep(2);
+    });
+
+    // Submit ke backend
     document.getElementById('submit-consult').addEventListener('click', async () => {
       const height_cm = parseFloat(document.getElementById('height_cm').value);
       const weight_kg = parseFloat(document.getElementById('weight_kg').value);
 
+      // Preferensi
+      const vegetarian = document.getElementById('vegetarian').checked;
+      const halal = document.getElementById('halal').checked;
+      const lactose_free = document.getElementById('lactose_free').checked;
+      const gluten_free = document.getElementById('gluten_free').checked;
+      const no_seafood = document.getElementById('no_seafood').checked;
+
+      // Kondisi kesehatan
       const diabetes = document.getElementById('diabetes').checked;
       const hypertension = document.getElementById('hypertension').checked;
-      const vegetarian = document.getElementById('vegetarian').checked;
       const allergy_susu = document.getElementById('allergy_susu').checked;
       const allergy_seafood = document.getElementById('allergy_seafood').checked;
+      const hyperlipidemia = document.getElementById('hyperlipidemia').checked;
+      const gout = document.getElementById('gout').checked;
+      const heart_disease = document.getElementById('heart_disease').checked;
+      const gerd = document.getElementById('gerd').checked;
 
       const payload = {
         height_cm,
         weight_kg,
+        // kondisi kesehatan
         diabetes,
         hypertension,
-        vegetarian,
         allergy_susu,
-        allergy_seafood
+        allergy_seafood,
+        hyperlipidemia,
+        gout,
+        heart_disease,
+        gerd,
+        // preferensi
+        vegetarian,
+        halal,
+        lactose_free,
+        gluten_free,
+        no_seafood
       };
 
       try {
@@ -263,7 +350,10 @@ Mochamad Kolbi Nuron / 5025231183
     });
 
     function tampilkanHasil(data) {
+      document.getElementById('wizard-card').classList.add('hidden');
+
       resultCard.classList.remove('hidden');
+      setActiveStep(4);
 
       const {
         bmi,
@@ -290,8 +380,10 @@ Mochamad Kolbi Nuron / 5025231183
 
         <h3>Kebutuhan Nutrisi Harian</h3>
         <p>
-          Perkiraan kebutuhan kalori: <strong>${calories_min_per_day} – ${calories_max_per_day} kkal/hari</strong><br/>
-          Perkiraan kebutuhan protein: <strong>${protein_grams_per_day} gram/hari</strong><br/>
+          Perkiraan kebutuhan kalori:
+          <strong>${calories_min_per_day} - ${calories_max_per_day} kkal/hari</strong><br/>
+          Perkiraan kebutuhan protein:
+          <strong>${protein_grams_per_day} gram/hari</strong><br/>
           ${selected_bmi_rule ? `<span class="small">Rule KB terpakai: ${selected_bmi_rule}</span>` : ''}
         </p>
 
@@ -331,10 +423,10 @@ Mochamad Kolbi Nuron / 5025231183
                     .map(f => `
                       <tr>
                         <td>${f.name}</td>
-                        <td>${f.per_100g.calories}</td>
+                        <td>${f.per_100g.calories ?? f.per_100g.kalori}</td>
                         <td>${f.per_100g.protein}</td>
-                        <td>${f.per_100g.carbs}</td>
-                        <td>${f.per_100g.fat}</td>
+                        <td>${f.per_100g.carbs ?? f.per_100g.karbo}</td>
+                        <td>${f.per_100g.fat ?? f.per_100g.lemak}</td>
                         <td>${f.tags.map(t => `<span class="badge">${t}</span>`).join(' ')}</td>
                       </tr>
                     `)

@@ -28,8 +28,9 @@
       "diet_tags_add": ["low_sugar", "low_glycemic"],
       "tips": [
         "Batasi penggunaan gula tambahan dalam minuman dan makanan.",
-        "Pilih sumber karbohidrat kompleks (nasi merah, roti gandum, oatmeal).",
-        "Hindari minuman manis dan produk dengan gula tinggi."
+        "Pilih sumber karbohidrat kompleks seperti nasi merah, roti gandum utuh, dan oatmeal.",
+        "Hindari minuman manis dan produk dengan gula tinggi.",
+        "Usahakan makan dengan jadwal teratur untuk membantu menjaga kestabilan gula darah."
       ]
     },
     {
@@ -38,49 +39,766 @@
       "value": true,
       "diet_tags_add": ["low_sodium"],
       "tips": [
-        "Hindari menambahkan garam meja secara berlebihan.",
-        "Gunakan bumbu alami seperti bawang putih, jahe, dan rempah.",
-        "Batasi ultra processed food natrium (sosis, kornet, makanan kaleng)."
+        "Hindari menambahkan garam meja secara berlebihan saat memasak atau makan.",
+        "Gunakan bumbu alami seperti bawang putih, jahe, dan rempah dibanding penyedap tinggi natrium.",
+        "Batasi makanan ultra processed tinggi natrium (sosis, kornet, makanan kaleng, mie instan).",
+        "Perbanyak konsumsi sayur dan buah segar setiap hari."
+      ]
+    },
+    {
+      "id": "COND_ALLERGY_MILK",
+      "condition_fact": "allergy_susu",
+      "value": true,
+      "diet_tags_add": ["avoid_dairy"],
+      "tips": [
+        "Hindari semua produk susu dan olahannya (susu, keju, yogurt, mentega).",
+        "Periksa label kemasan makanan untuk melihat adanya susu, whey, casein, atau laktosa.",
+        "Pilih alternatif nabati seperti susu kedelai, susu almond, atau susu oat jika diperlukan."
+      ]
+    },
+    {
+      "id": "COND_ALLERGY_SEAFOOD",
+      "condition_fact": "allergy_seafood",
+      "value": true,
+      "diet_tags_add": ["avoid_seafood"],
+      "tips": [
+        "Hindari semua jenis makanan laut seperti ikan, udang, cumi, dan kerang.",
+        "Waspadai kontaminasi silang saat makan di luar (minyak goreng atau alat masak yang sama).",
+        "Pilih sumber protein lain seperti ayam, telur, tahu, atau tempe."
+      ]
+    },
+    {
+      "id": "COND_HYPERLIPIDEMIA",
+      "condition_fact": "hyperlipidemia",
+      "value": true,
+      "diet_tags_add": ["low_fat", "low_cholesterol", "high_fiber"],
+      "tips": [
+        "Batasi makanan tinggi lemak jenuh dan lemak trans seperti gorengan, fast food, dan daging berlemak.",
+        "Pilih sumber lemak sehat dari ikan berlemak (salmon, tuna), alpukat, dan kacang-kacangan.",
+        "Perbanyak serat larut seperti oatmeal, kacang-kacangan, dan buah.",
+        "Kurangi konsumsi jeroan, kuning telur berlebihan, dan produk tinggi kolesterol lainnya."
+      ]
+    },
+    {
+      "id": "COND_GOUT",
+      "condition_fact": "gout",
+      "value": true,
+      "diet_tags_add": ["low_purine", "avoid_organ_meats", "avoid_certain_seafood"],
+      "tips": [
+        "Batasi makanan tinggi purin seperti jeroan (hati, usus), daging merah berlemak, dan beberapa jenis seafood.",
+        "Batasi konsumsi kaldu daging kental dan makanan olahan dari daging.",
+        "Perbanyak minum air putih kecuali ada pembatasan cairan dari dokter.",
+        "Batasi minuman manis dan minuman beralkohol karena dapat memicu serangan gout."
+      ]
+    },
+    {
+      "id": "COND_HEART_DISEASE",
+      "condition_fact": "heart_disease",
+      "value": true,
+      "diet_tags_add": ["low_sodium", "heart_friendly", "low_fat"],
+      "tips": [
+        "Batasi garam dan makanan tinggi natrium seperti makanan kaleng, keripik asin, dan daging olahan.",
+        "Pilih metode memasak sehat seperti rebus, kukus, panggang, atau tumis sedikit minyak.",
+        "Perbanyak sayur, buah, dan biji-bijian utuh (whole grain).",
+        "Batasi lemak jenuh (daging berlemak, kulit ayam) dan gantikan dengan lemak sehat (ikan, kacang, alpukat)."
+      ]
+    },
+    {
+      "id": "COND_GERD",
+      "condition_fact": "gerd",
+      "value": true,
+      "diet_tags_add": ["avoid_acidic", "avoid_caffeine", "avoid_high_fat"],
+      "tips": [
+        "Hindari makanan terlalu asam, pedas, berlemak, dan digoreng.",
+        "Batasi kopi, teh pekat, cokelat, dan minuman bersoda.",
+        "Makan dalam porsi kecil namun lebih sering, jangan langsung berbaring setelah makan.",
+        "Perhatikan makanan pemicu pribadi (misalnya gorengan, cabai, saus tomat) dan kurangi konsumsinya."
       ]
     }
   ],
 
   "foods": [
     {
-      "id": "chicken_breast",
-      "name": "Dada ayam tanpa kulit",
+      "id": "dada_ayam",
+      "name": "Dada ayam",
       "per_100g": {
-        "calories": 165,
-        "protein": 31,
+        "calories": 195,
+        "protein": 29.55,
         "carbs": 0,
-        "fat": 3.6,
+        "fat": 7.72,
         "sugar": 0
       },
-      "tags": ["high_protein", "low_fat", "diabetes_friendly", "low_sugar"]
+      "tags": [
+        "high_protein",
+        "low_fat",
+        "low_carb",
+        "poultry",
+        "non_vegetarian",
+        "halal",
+        "diabetes_friendly",
+        "heart_friendly"
+      ]
     },
     {
-      "id": "tofu",
+      "id": "paha_ayam",
+      "name": "Paha ayam tanpa kulit",
+      "per_100g": {
+        "calories": 135,
+        "protein": 13.67,
+        "carbs": 0,
+        "fat": 8.45,
+        "sugar": 0
+      },
+      "tags": [
+        "high_protein",
+        "moderate_fat",
+        "low_carb",
+        "poultry",
+        "non_vegetarian",
+        "halal"
+      ]
+    },
+    {
+      "id": "telur",
+      "name": "Telur ayam utuh",
+      "per_100g": {
+        "calories": 74,
+        "protein": 6.29,
+        "carbs": 0.38,
+        "fat": 4.97,
+        "sugar": 0.38
+      },
+      "tags": [
+        "high_protein",
+        "high_fat",
+        "egg",
+        "non_vegetarian",
+        "halal",
+        "high_cholesterol"
+      ]
+    },
+    {
+      "id": "putih_telur",
+      "name": "Putih telur",
+      "per_100g": {
+        "calories": 52,
+        "protein": 10.9,
+        "carbs": 0.73,
+        "fat": 0.17,
+        "sugar": 0.71
+      },
+      "tags": [
+        "high_protein",
+        "low_fat",
+        "low_carb",
+        "egg",
+        "non_vegetarian",
+        "halal",
+        "heart_friendly",
+        "diabetes_friendly"
+      ]
+    },
+    {
+      "id": "salmon",
+      "name": "Ikan salmon",
+      "per_100g": {
+        "calories": 146,
+        "protein": 21.62,
+        "carbs": 0,
+        "fat": 5.93,
+        "sugar": 0
+      },
+      "tags": [
+        "high_protein",
+        "high_fat",
+        "omega_3_rich",
+        "fish",
+        "seafood",
+        "non_vegetarian",
+        "halal",
+        "heart_friendly"
+      ]
+    },
+    {
+      "id": "tuna",
+      "name": "Ikan tuna",
+      "per_100g": {
+        "calories": 108,
+        "protein": 23.38,
+        "carbs": 0,
+        "fat": 0.95,
+        "sugar": 0
+      },
+      "tags": [
+        "high_protein",
+        "low_fat",
+        "low_carb",
+        "fish",
+        "seafood",
+        "non_vegetarian",
+        "halal",
+        "heart_friendly"
+      ]
+    },
+    {
+      "id": "udang",
+      "name": "Udang",
+      "per_100g": {
+        "calories": 144,
+        "protein": 27.59,
+        "carbs": 1.24,
+        "fat": 2.35,
+        "sugar": 0
+      },
+      "tags": [
+        "high_protein",
+        "low_fat",
+        "low_carb",
+        "seafood",
+        "non_vegetarian",
+        "halal",
+        "high_cholesterol"
+      ]
+    },
+    {
+      "id": "cumi",
+      "name": "Cumi-cumi",
+      "per_100g": {
+        "calories": 92,
+        "protein": 15.58,
+        "carbs": 3.08,
+        "fat": 1.38,
+        "sugar": 0
+      },
+      "tags": [
+        "high_protein",
+        "low_fat",
+        "low_carb",
+        "seafood",
+        "non_vegetarian",
+        "halal"
+      ]
+    },
+    {
+      "id": "tahu",
       "name": "Tahu",
       "per_100g": {
-        "calories": 76,
-        "protein": 8,
-        "carbs": 1.9,
-        "fat": 4.8,
-        "sugar": 0.6
+        "calories": 78,
+        "protein": 7.97,
+        "carbs": 2.1,
+        "fat": 4.95,
+        "sugar": 0.43
       },
-      "tags": ["high_protein", "vegetarian", "diabetes_friendly"]
+      "tags": [
+        "high_protein",
+        "plant_protein",
+        "moderate_fat",
+        "low_sugar",
+        "vegetarian",
+        "vegan",
+        "halal",
+        "diabetes_friendly",
+        "heart_friendly"
+      ]
     },
     {
-      "id": "white_rice",
+      "id": "tempe",
+      "name": "Tempe",
+      "per_100g": {
+        "calories": 193,
+        "protein": 18.54,
+        "carbs": 9.39,
+        "fat": 10.8,
+        "sugar": 0
+      },
+      "tags": [
+        "high_protein",
+        "plant_protein",
+        "moderate_fat",
+        "high_fiber",
+        "low_sugar",
+        "vegetarian",
+        "vegan",
+        "halal",
+        "diabetes_friendly",
+        "heart_friendly"
+      ]
+    },
+    {
+      "id": "kacang_merah",
+      "name": "Kacang merah",
+      "per_100g": {
+        "calories": 41,
+        "protein": 2.75,
+        "carbs": 7.38,
+        "fat": 0.13,
+        "sugar": 0.27
+      },
+      "tags": [
+        "moderate_protein",
+        "plant_protein",
+        "high_carb",
+        "high_fiber",
+        "low_sugar",
+        "vegetarian",
+        "vegan",
+        "halal",
+        "diabetes_friendly",
+        "high_potassium"
+      ]
+    },
+    {
+      "id": "nasi_putih",
       "name": "Nasi putih",
       "per_100g": {
-        "calories": 130,
-        "protein": 2.4,
-        "carbs": 28,
-        "fat": 0.3,
-        "sugar": 0.1
+        "calories": 129,
+        "protein": 2.66,
+        "carbs": 27.9,
+        "fat": 0.28,
+        "sugar": 0.05
       },
-      "tags": ["high_carb", "not_low_glycemic"]
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "low_fiber",
+        "not_low_glycemic",
+        "gluten_free",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "nasi_merah",
+      "name": "Nasi merah",
+      "per_100g": {
+        "calories": 110,
+        "protein": 2.56,
+        "carbs": 22.78,
+        "fat": 0.89,
+        "sugar": 0.35
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "high_fiber",
+        "low_glycemic",
+        "gluten_free",
+        "diabetes_friendly",
+        "vegetarian",
+        "vegan",
+        "halal",
+        "heart_friendly"
+      ]
+    },
+    {
+      "id": "oatmeal",
+      "name": "Oatmeal",
+      "per_100g": {
+        "calories": 91,
+        "protein": 2.46,
+        "carbs": 18.22,
+        "fat": 1.2,
+        "sugar": 6.58
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "high_fiber",
+        "low_glycemic",
+        "contains_gluten",
+        "diabetes_friendly",
+        "heart_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "kentang",
+      "name": "Kentang",
+      "per_100g": {
+        "calories": 87,
+        "protein": 1.87,
+        "carbs": 20.13,
+        "fat": 0.1,
+        "sugar": 0.87
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "moderate_fiber",
+        "not_low_glycemic",
+        "gluten_free",
+        "vegetarian",
+        "vegan",
+        "halal",
+        "high_potassium"
+      ]
+    },
+    {
+      "id": "ubi",
+      "name": "Ubi jalar",
+      "per_100g": {
+        "calories": 86,
+        "protein": 1.57,
+        "carbs": 20.12,
+        "fat": 0.05,
+        "sugar": 4.18
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "high_fiber",
+        "low_glycemic",
+        "gluten_free",
+        "diabetes_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "jagung",
+      "name": "Jagung manis rebus",
+      "per_100g": {
+        "calories": 86,
+        "protein": 3.22,
+        "carbs": 19.02,
+        "fat": 1.18,
+        "sugar": 3.22
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "moderate_fiber",
+        "gluten_free",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+
+    {
+      "id": "pisang",
+      "name": "Pisang",
+      "per_100g": {
+        "calories": 89,
+        "protein": 1.09,
+        "carbs": 22.84,
+        "fat": 0.33,
+        "sugar": 12.23
+      },
+      "tags": [
+        "fruit",
+        "high_carb",
+        "high_sugar",
+        "high_fiber",
+        "not_low_glycemic",
+        "high_potassium",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "mangga",
+      "name": "Mangga",
+      "per_100g": {
+        "calories": 65,
+        "protein": 0.51,
+        "carbs": 17,
+        "fat": 0.27,
+        "sugar": 14.8
+      },
+      "tags": [
+        "fruit",
+        "high_carb",
+        "high_sugar",
+        "not_low_glycemic",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "pepaya",
+      "name": "Pepaya",
+      "per_100g": {
+        "calories": 39,
+        "protein": 0.61,
+        "carbs": 9.81,
+        "fat": 0.14,
+        "sugar": 5.9
+      },
+      "tags": [
+        "fruit",
+        "high_carb",
+        "high_sugar",
+        "high_fiber",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "stroberi",
+      "name": "Stroberi",
+      "per_100g": {
+        "calories": 32,
+        "protein": 0.67,
+        "carbs": 7.68,
+        "fat": 0.3,
+        "sugar": 4.66
+      },
+      "tags": [
+        "fruit",
+        "moderate_carb",
+        "low_sugar",
+        "high_fiber",
+        "low_glycemic",
+        "diabetes_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "alpukat",
+      "name": "Alpukat",
+      "per_100g": {
+        "calories": 160,
+        "protein": 2,
+        "carbs": 8.53,
+        "fat": 14.66,
+        "sugar": 0.66
+      },
+      "tags": [
+        "fruit",
+        "healthy_fat",
+        "high_fat",
+        "low_carb",
+        "high_fiber",
+        "heart_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "bayam",
+      "name": "Bayam",
+      "per_100g": {
+        "calories": 23,
+        "protein": 2.86,
+        "carbs": 3.63,
+        "fat": 0.39,
+        "sugar": 0.42
+      },
+      "tags": [
+        "vegetable",
+        "low_carb",
+        "high_fiber",
+        "low_sugar",
+        "diabetes_friendly",
+        "heart_friendly",
+        "high_potassium",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "brokoli",
+      "name": "Brokoli",
+      "per_100g": {
+        "calories": 34,
+        "protein": 2.82,
+        "carbs": 6.64,
+        "fat": 0.37,
+        "sugar": 1.7
+      },
+      "tags": [
+        "vegetable",
+        "low_carb",
+        "high_fiber",
+        "low_sugar",
+        "diabetes_friendly",
+        "heart_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "tomat",
+      "name": "Tomat",
+      "per_100g": {
+        "calories": 18,
+        "protein": 0.88,
+        "carbs": 3.92,
+        "fat": 0.2,
+        "sugar": 2.63
+      },
+      "tags": [
+        "vegetable",
+        "low_carb",
+        "low_sugar",
+        "high_fiber",
+        "diabetes_friendly",
+        "heart_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "selada",
+      "name": "Selada",
+      "per_100g": {
+        "calories": 14,
+        "protein": 0.9,
+        "carbs": 2.97,
+        "fat": 0.14,
+        "sugar": 1.76
+      },
+      "tags": [
+        "vegetable",
+        "very_low_carb",
+        "low_sugar",
+        "high_fiber",
+        "diabetes_friendly",
+        "heart_friendly",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "wortel",
+      "name": "Wortel",
+      "per_100g": {
+        "calories": 41,
+        "protein": 0.93,
+        "carbs": 9.58,
+        "fat": 0.24,
+        "sugar": 4.54
+      },
+      "tags": [
+        "vegetable",
+        "moderate_carb",
+        "moderate_sugar",
+        "high_fiber",
+        "vegetarian",
+        "vegan",
+        "halal"
+      ]
+    },
+    {
+      "id": "kacang_almond",
+      "name": "Kacang almond",
+      "per_100g": {
+        "calories": 578,
+        "protein": 21.26,
+        "carbs": 19.74,
+        "fat": 50.64,
+        "sugar": 4.8
+      },
+      "tags": [
+        "plant_protein",
+        "healthy_fat",
+        "high_fat",
+        "moderate_carb",
+        "high_fiber",
+        "vegetarian",
+        "vegan",
+        "halal",
+        "heart_friendly"
+      ]
+    },
+    {
+      "id": "susu_lowfat",
+      "name": "Susu rendah lemak",
+      "per_100g": {
+        "calories": 42,
+        "protein": 3.37,
+        "carbs": 4.99,
+        "fat": 0.97,
+        "sugar": 5.2
+      },
+      "tags": [
+        "dairy",
+        "animal_protein",
+        "moderate_protein",
+        "moderate_carb",
+        "lactose",
+        "vegetarian",
+        "halal"
+      ]
+    },
+    {
+      "id": "yogurt_plain",
+      "name": "Yogurt plain",
+      "per_100g": {
+        "calories": 63,
+        "protein": 5.25,
+        "carbs": 7.04,
+        "fat": 1.55,
+        "sugar": 4.66
+      },
+      "tags": [
+        "dairy",
+        "animal_protein",
+        "moderate_protein",
+        "moderate_carb",
+        "lactose",
+        "vegetarian",
+        "halal",
+        "heart_friendly"
+      ]
+    },
+    {
+      "id": "roti_tawar",
+      "name": "Roti tawar",
+      "per_100g": {
+        "calories": 248,
+        "protein": 8,
+        "carbs": 49,
+        "fat": 3.2,
+        "sugar": 4.3
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "low_fiber",
+        "contains_gluten",
+        "not_low_glycemic",
+        "moderate_sugar",
+        "vegetarian",
+        "halal"
+      ]
+    },
+    {
+      "id": "roti_gandum",
+      "name": "Roti gandum",
+      "per_100g": {
+        "calories": 246,
+        "protein": 9,
+        "carbs": 47,
+        "fat": 3,
+        "sugar": 5
+      },
+      "tags": [
+        "carb_source",
+        "high_carb",
+        "high_fiber",
+        "contains_gluten",
+        "low_glycemic",
+        "diabetes_friendly",
+        "heart_friendly",
+        "vegetarian",
+        "halal"
+      ]
     }
   ]
 }
