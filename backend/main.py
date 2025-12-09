@@ -169,7 +169,7 @@ def pilih_rekomendasi_makanan(
 
         hasil.append(food)
 
-    return hasil[:5]
+    return hasil[:10]
 
 
 @app.post("/consult")

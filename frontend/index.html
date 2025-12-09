@@ -70,6 +70,10 @@
       color: #e5e7eb;
       margin-right: 8px;
     }
+    button.back-dashboard {
+      float: right;
+      margin-left: 8px;
+    }
     .steps {
       display: flex;
       gap: 8px;
@@ -144,6 +148,24 @@
 <body>
   <h1>Sistem Pakar Diet</h1>
 
+  <!-- DASHBOARD UTAMA -->
+  <div id="dashboard-card" class="card">
+    <h2>Dashboard</h2>
+    <p>
+      Selamat datang! <br />
+      Sistem diet yang membantu Anda menemukan pola makan terbaik sesuai kondisi tubuh Anda.
+    </p>
+    <ul>
+      <li>Hitung BMI &amp; berat ideal</li>
+      <li>Rekomendasi Kebutuhan Nutrisi Harian</li>
+      <li>Tips Pengolahan & Kebiasaan</li>
+      <li>Daftar bahan makanan yang aman & sesuai</li>
+    </ul>
+
+    <button id="start-consult">Mulai Konsultasi Diet</button>
+  </div>
+
+  <!-- WIZARD STEP 1-3 -->
   <div id="wizard-card" class="card">
     <div class="steps">
       <div id="step1-pill" class="step-pill active">Data Fisik</div>
@@ -164,6 +186,7 @@
       </label>
 
       <button id="to-step2">Next</button>
+      <button class="back-dashboard secondary" id="dash-step1">Back to Dashboard</button>
     </div>
 
     <!-- STEP 2: Preferensi -->
@@ -179,6 +202,7 @@
 
       <button class="secondary" id="back-step1">Back</button>
       <button id="to-step3">Next</button>
+      <button class="back-dashboard secondary" id="dash-step2">Back to Dashboard</button>
     </div>
 
     <!-- STEP 3: Kondisi Kesehatan -->
@@ -196,7 +220,8 @@
       </div>
 
       <button class="secondary" id="back-step2">Back</button>
-      <button id="submit-consult">Hitung Rekomendasi</button>
+      <button id="submit-consult">Next</button>
+      <button class="back-dashboard secondary" id="dash-step3">Back to Dashboard</button>
     </div>
   </div>
 
@@ -204,9 +229,8 @@
   <div id="result-card" class="card hidden">
     <h2>Hasil Rekomendasi</h2>
     <div id="result-content" class="result-section"></div>
-    <button id="back-to-start" class="secondary">Back</button>
+    <button class="secondary" id="dash-result">Back to Dashboard</button>
   </div>
-
 
   <footer>
     Nama Anggota Kelompok:<br>
@@ -230,8 +254,35 @@
     const step3Pill = document.getElementById('step3-pill');
     const step4Pill = document.getElementById('step4-pill');
 
-    document.getElementById('back-to-start').addEventListener('click', () => {
-      document.getElementById('wizard-card').classList.remove('hidden');
+    const wizardCard = document.getElementById('wizard-card');
+    const dashboardCard = document.getElementById('dashboard-card');
+
+    function setActiveStep(stepNumber) {
+      const pills = [step1Pill, step2Pill, step3Pill, step4Pill];
+      pills.forEach((pill, idx) => {
+        pill.classList.toggle('active', idx === stepNumber - 1);
+      });
+    }
+
+    function goToDashboard() {
+      dashboardCard.classList.remove('hidden');
+      wizardCard.classList.add('hidden');
+      resultCard.classList.add('hidden');
+      setActiveStep(1);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // ====== STATE AWAL: tampilkan dashboard, sembunyikan wizard & hasil ======
+    wizardCard.classList.add('hidden');
+    resultCard.classList.add('hidden');
+    setActiveStep(1);
+
+    // Tombol di dashboard untuk mulai konsultasi
+    document.getElementById('start-consult').addEventListener('click', () => {
+      dashboardCard.classList.add('hidden');
+      wizardCard.classList.remove('hidden');
+
+      // reset ke step 1
       step1El.classList.remove('hidden');
       step2El.classList.add('hidden');
       step3El.classList.add('hidden');
@@ -240,12 +291,11 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
-    function setActiveStep(stepNumber) {
-      const pills = [step1Pill, step2Pill, step3Pill, step4Pill];
-      pills.forEach((pill, idx) => {
-        pill.classList.toggle('active', idx === stepNumber - 1);
-      });
-    }
+    // Tombol back ke dashboard di tiap step + hasil
+    document.getElementById('dash-step1').addEventListener('click', goToDashboard);
+    document.getElementById('dash-step2').addEventListener('click', goToDashboard);
+    document.getElementById('dash-step3').addEventListener('click', goToDashboard);
+    document.getElementById('dash-result').addEventListener('click', goToDashboard);
 
     // Navigasi step
     document.getElementById('to-step2').addEventListener('click', () => {
@@ -350,8 +400,8 @@
     });
 
     function tampilkanHasil(data) {
-      document.getElementById('wizard-card').classList.add('hidden');
-
+      // sembunyikan wizard, tampilkan hasil
+      wizardCard.classList.add('hidden');
       resultCard.classList.remove('hidden');
       setActiveStep(4);
 
