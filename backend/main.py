@@ -28,12 +28,12 @@ class UserInput(BaseModel):
 
     # Kondisi kesehatan
     diabetes: bool = False
-    hypertension: bool = False
-    allergy_susu: bool = False
-    allergy_seafood: bool = False
-    hyperlipidemia: bool = False
-    gout: bool = False
-    heart_disease: bool = False
+    hipertensi: bool = False
+    alergi_susu: bool = False
+    alergi_seafood: bool = False
+    kolesterol: bool = False
+    asam_urat: bool = False
+    penyakit_jantung: bool = False
     gerd: bool = False
 
     # Preferensi
@@ -194,12 +194,12 @@ def consult(user: UserInput):
 
     health_facts = {
         "diabetes": user.diabetes,
-        "hypertension": user.hypertension,
-        "allergy_susu": user.allergy_susu,
-        "allergy_seafood": user.allergy_seafood,
-        "hyperlipidemia": user.hyperlipidemia,
-        "gout": user.gout,
-        "heart_disease": user.heart_disease,
+        "hipertensi": user.hipertensi,
+        "alergi_susu": user.alergi_susu,
+        "alergi_seafoodd": user.alergi_seafood,
+        "kolesterol": user.kolesterol,
+        "asam_urat": user.asam_urat,
+        "penyakit_jantung": user.penyakit_jantung,
         "gerd": user.gerd,
     }
 

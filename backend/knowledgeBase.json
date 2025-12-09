@@ -27,80 +27,77 @@
       "value": true,
       "diet_tags_add": ["low_sugar", "low_glycemic"],
       "tips": [
-        "Batasi penggunaan gula tambahan dalam minuman dan makanan.",
-        "Pilih sumber karbohidrat kompleks seperti nasi merah, roti gandum utuh, dan oatmeal.",
+        "Menerapkan pola makan ini, mulai dengan mengisi setengah piring dengan sayuran, seperti bayam, tomat, dan wortel.",
+        "Menghitung dan membatasi jumlah karbohidrat yang masuk ke dalam tubuh.",
         "Hindari minuman manis dan produk dengan gula tinggi.",
-        "Usahakan makan dengan jadwal teratur untuk membantu menjaga kestabilan gula darah."
+        "Usahakan makan dengan jadwal teratur untuk membantu menjaga kestabilan gula darah.",
+        "Perbanyak konsumsi sayuran dan buah yang mengandung serat tinggi untuk mengontrol gula darah."
       ]
     },
     {
       "id": "COND_HYPERTENSION",
-      "condition_fact": "hypertension",
+      "condition_fact": "hipertensi",
       "value": true,
       "diet_tags_add": ["low_sodium"],
       "tips": [
-        "Hindari menambahkan garam meja secara berlebihan saat memasak atau makan.",
-        "Gunakan bumbu alami seperti bawang putih, jahe, dan rempah dibanding penyedap tinggi natrium.",
-        "Batasi makanan ultra processed tinggi natrium (sosis, kornet, makanan kaleng, mie instan).",
-        "Perbanyak konsumsi sayur dan buah segar setiap hari."
+        "Konsumsi makanan sehat bergizi seimbang dengan rendah garam untuk membantu mengontrol tekanan darah.",
+        "Batasi konsumsi alkohol dan kurangi kafein yang dapat memicu peningkatan tekanan darah.",
+        "Jaga pola makan yang mendukung berat badan ideal, karena kelebihan berat badan meningkatkan risiko hipertensi."
       ]
     },
     {
       "id": "COND_ALLERGY_MILK",
-      "condition_fact": "allergy_susu",
+      "condition_fact": "alergi_susu",
       "value": true,
       "diet_tags_add": ["avoid_dairy"],
       "tips": [
-        "Hindari semua produk susu dan olahannya (susu, keju, yogurt, mentega).",
+        "Tidak mengonsumsi susu atau produk yang mengandung susu maupun protein susu",
         "Periksa label kemasan makanan untuk melihat adanya susu, whey, casein, atau laktosa.",
-        "Pilih alternatif nabati seperti susu kedelai, susu almond, atau susu oat jika diperlukan."
+        "Pilih alternatif seperti susu formula hipoalergenik, susu kedelai, maupun susu beras (rice milk) bisa menjadi alternatif pengganti untuk mencegah gejala."
       ]
     },
     {
       "id": "COND_ALLERGY_SEAFOOD",
-      "condition_fact": "allergy_seafood",
+      "condition_fact": "alergi_seafood",
       "value": true,
       "diet_tags_add": ["avoid_seafood"],
       "tips": [
-        "Hindari semua jenis makanan laut seperti ikan, udang, cumi, dan kerang.",
-        "Waspadai kontaminasi silang saat makan di luar (minyak goreng atau alat masak yang sama).",
-        "Pilih sumber protein lain seperti ayam, telur, tahu, atau tempe."
+        "Hindari seluruh makanan berbahan seafood, termasuk yang hanya menjadi campuran kaldu atau saus.",
+        "Waspadai makanan olahan atau masakan yang berpotensi terkontaminasi seafood saat proses memasak.",
+        "Pilih makanan alternatif berprotein non-seafood seperti ayam, telur, kacang-kacangan, atau sumber nabati lain yang aman."
       ]
     },
     {
       "id": "COND_HYPERLIPIDEMIA",
-      "condition_fact": "hyperlipidemia",
+      "condition_fact": "kolesterol",
       "value": true,
       "diet_tags_add": ["low_fat", "low_cholesterol", "high_fiber"],
       "tips": [
-        "Batasi makanan tinggi lemak jenuh dan lemak trans seperti gorengan, fast food, dan daging berlemak.",
-        "Pilih sumber lemak sehat dari ikan berlemak (salmon, tuna), alpukat, dan kacang-kacangan.",
-        "Perbanyak serat larut seperti oatmeal, kacang-kacangan, dan buah.",
-        "Kurangi konsumsi jeroan, kuning telur berlebihan, dan produk tinggi kolesterol lainnya."
+        "Pilih sumber lemak sehat seperti ikan berlemak, alpukat, dan kacang-kacangan, serta tingkatkan asupan omega-3.",
+        "Hindari makanan tinggi lemak jenuh dan lemak trans, termasuk gorengan, makanan cepat saji, sosis, dan makanan kaleng.",
+        "Perbanyak makanan tinggi serat seperti sayuran, buah, kacang-kacangan, oat, dan biji-bijian untuk membantu menurunkan kolesterol."
       ]
     },
     {
       "id": "COND_GOUT",
-      "condition_fact": "gout",
+      "condition_fact": "asam_urat",
       "value": true,
       "diet_tags_add": ["low_purine", "avoid_organ_meats", "avoid_certain_seafood"],
       "tips": [
-        "Batasi makanan tinggi purin seperti jeroan (hati, usus), daging merah berlemak, dan beberapa jenis seafood.",
-        "Batasi konsumsi kaldu daging kental dan makanan olahan dari daging.",
-        "Perbanyak minum air putih kecuali ada pembatasan cairan dari dokter.",
-        "Batasi minuman manis dan minuman beralkohol karena dapat memicu serangan gout."
+        "Batasi makanan tinggi purin seperti daging merah, jeroan, seafood, dan minuman manis.",
+        "Perbanyak konsumsi buah, sayuran, dan biji-bijian utuh untuk membantu menurunkan kadar asam urat.",
+        "Minum cukup air setiap hari agar ginjal lebih mudah membuang asam urat."
       ]
     },
     {
       "id": "COND_HEART_DISEASE",
-      "condition_fact": "heart_disease",
+      "condition_fact": "penyakit_jantung",
       "value": true,
       "diet_tags_add": ["low_sodium", "heart_friendly", "low_fat"],
       "tips": [
-        "Batasi garam dan makanan tinggi natrium seperti makanan kaleng, keripik asin, dan daging olahan.",
-        "Pilih metode memasak sehat seperti rebus, kukus, panggang, atau tumis sedikit minyak.",
-        "Perbanyak sayur, buah, dan biji-bijian utuh (whole grain).",
-        "Batasi lemak jenuh (daging berlemak, kulit ayam) dan gantikan dengan lemak sehat (ikan, kacang, alpukat)."
+        "Konsumsi makanan tinggi serat seperti buah, sayur, dan biji-bijian untuk mendukung kesehatan jantung.",
+        "Batasi makanan tinggi lemak jenuh, gula, dan garam agar risiko penyakit jantung menurun.",
+        "Jaga pola makan seimbang untuk membantu mengontrol berat badan dan menjaga tekanan darah tetap stabil."
       ]
     },
     {
@@ -109,10 +106,9 @@
       "value": true,
       "diet_tags_add": ["avoid_acidic", "avoid_caffeine", "avoid_high_fat"],
       "tips": [
-        "Hindari makanan terlalu asam, pedas, berlemak, dan digoreng.",
-        "Batasi kopi, teh pekat, cokelat, dan minuman bersoda.",
+        "Menghindari makanan berlemak, pedas, dan tinggi asam yang dapat memicu gejala.",
         "Makan dalam porsi kecil namun lebih sering, jangan langsung berbaring setelah makan.",
-        "Perhatikan makanan pemicu pribadi (misalnya gorengan, cabai, saus tomat) dan kurangi konsumsinya."
+        "Jaga pola makan seimbang untuk membantu mengontrol berat badan dan menjaga tekanan darah tetap stabil."
       ]
     }
   ],
@@ -141,7 +137,7 @@
     },
     {
       "id": "paha_ayam",
-      "name": "Paha ayam tanpa kulit",
+      "name": "Paha ayam",
       "per_100g": {
         "calories": 135,
         "protein": 13.67,
@@ -160,7 +156,7 @@
     },
     {
       "id": "telur",
-      "name": "Telur ayam utuh",
+      "name": "Telur ayam",
       "per_100g": {
         "calories": 74,
         "protein": 6.29,

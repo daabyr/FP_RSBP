@@ -210,12 +210,12 @@
       <label>Kondisi Kesehatan:</label>
       <div class="checkbox-group">
         <label><input type="checkbox" id="diabetes" /> Diabetes</label>
-        <label><input type="checkbox" id="hypertension" /> Hipertensi</label>
-        <label><input type="checkbox" id="allergy_susu" /> Alergi susu</label>
-        <label><input type="checkbox" id="allergy_seafood" /> Alergi seafood</label>
-        <label><input type="checkbox" id="hyperlipidemia" /> Kolesterol tinggi</label>
-        <label><input type="checkbox" id="gout" /> Asam urat</label>
-        <label><input type="checkbox" id="heart_disease" /> Penyakit jantung</label>
+        <label><input type="checkbox" id="hipertensi" /> Hipertensi</label>
+        <label><input type="checkbox" id="alergi_susu" /> Alergi susu</label>
+        <label><input type="checkbox" id="alergi_seafood" /> Alergi seafood</label>
+        <label><input type="checkbox" id="kolestrol" /> Kolesterol tinggi</label>
+        <label><input type="checkbox" id="asam_urat" /> Asam urat</label>
+        <label><input type="checkbox" id="penyakit_jantung" /> Penyakit jantung</label>
         <label><input type="checkbox" id="gerd" /> GERD / Asam lambung</label>
       </div>
 
@@ -350,12 +350,12 @@
 
       // Kondisi kesehatan
       const diabetes = document.getElementById('diabetes').checked;
-      const hypertension = document.getElementById('hypertension').checked;
-      const allergy_susu = document.getElementById('allergy_susu').checked;
-      const allergy_seafood = document.getElementById('allergy_seafood').checked;
-      const hyperlipidemia = document.getElementById('hyperlipidemia').checked;
-      const gout = document.getElementById('gout').checked;
-      const heart_disease = document.getElementById('heart_disease').checked;
+      const hipertensi = document.getElementById('hipertensi').checked;
+      const alergi_susu = document.getElementById('alergi_susu').checked;
+      const alergi_seafood = document.getElementById('alergi_seafood').checked;
+      const kolestrol = document.getElementById('kolestrol').checked;
+      const asam_urat = document.getElementById('asam_urat').checked;
+      const penyakit_jantung = document.getElementById('penyakit_jantung').checked;
       const gerd = document.getElementById('gerd').checked;
 
       const payload = {
@@ -363,12 +363,12 @@
         weight_kg,
         // kondisi kesehatan
         diabetes,
-        hypertension,
-        allergy_susu,
-        allergy_seafood,
-        hyperlipidemia,
-        gout,
-        heart_disease,
+        hipertensi,
+        alergi_susu,
+        alergi_seafood,
+        kolestrol,
+        asam_urat,
+        penyakit_jantung,
         gerd,
         // preferensi
         vegetarian,
